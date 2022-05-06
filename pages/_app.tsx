@@ -1,8 +1,15 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/styles.scss";
+import type { AppProps } from "next/app";
+import { StyledProvider } from "theme";
+import { useEffect } from "react";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  useEffect(() => {}, []);
+  return (
+    <StyledProvider>
+      <Component {...pageProps} />
+    </StyledProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
