@@ -86,7 +86,7 @@ const SectionContact = () => {
       <Title>{data.title}</Title>
       <Description>{data.description}</Description>
       <ContactButton size="lg">
-        <a href={data.button.target} target="_blank">
+        <a href={data.button.target} target="_blank" rel="noreferrer">
           {data.button.text}
         </a>
       </ContactButton>

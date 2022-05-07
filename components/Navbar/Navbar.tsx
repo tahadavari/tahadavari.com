@@ -203,7 +203,7 @@ const Navbar = () => {
             </NavList>
             <MenuButton size="sm">
               {" "}
-              <a href={data.button.target} target="_blank">
+              <a href={data.button.target} target="_blank" rel="noreferrer">
                 {data.button.text}{" "}
               </a>
             </MenuButton>
