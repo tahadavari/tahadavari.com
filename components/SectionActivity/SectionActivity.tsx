@@ -12,8 +12,9 @@ const ChartsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 40px;
   & > figure {
-    width: 90%;
+    width: 70%;
   }
 `;
 const SectionActivity = () => {
