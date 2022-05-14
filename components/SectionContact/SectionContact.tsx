@@ -78,6 +78,13 @@ const Email = styled.a`
     transform: translateY(-3px);
   }
 `;
+const BUttonsContainer = styled.div`
+  display: flex;
+  flex-direction: space-between;
+  & > *:not(:last-child) {
+    margin-right: 20px;
+  }
+`;
 const SectionContact = () => {
   if (!data.show) return null;
   return (
@@ -85,11 +92,16 @@ const SectionContact = () => {
       <Badge>{data.badge}</Badge>
       <Title>{data.title}</Title>
       <Description>{data.description}</Description>
-      <ContactButton size="lg">
-        <a href={data.button.target} target="_blank" rel="noreferrer">
-          {data.button.text}
-        </a>
-      </ContactButton>
+      <BUttonsContainer>
+        {data.buttons.map((btn) => (
+          <ContactButton size="lg" key={btn.text}>
+            <a href={btn.target} target="_blank" rel="noreferrer">
+              {btn.text}
+            </a>
+          </ContactButton>
+        ))}
+      </BUttonsContainer>
+
       <InfoContainer>
         <Socials>
           <Social href={social.github} target="_blank">

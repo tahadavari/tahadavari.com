@@ -197,17 +197,24 @@ const data = {
     title: "Get In Touch",
     description:
       "My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!",
-    button: {
-      text: "Send Email",
-      target: "mailto:abolfazlabdalimore@gmail.com",
-    },
+    buttons: [
+      {
+        text: "📩 Send Email",
+        target: "mailto:abolfazlabdalimore@gmail.com",
+      },
+      {
+        text: `📞 WhatsApp`,
+        target:
+          "https://api.whatsapp.com/send/?phone=989390623327&text=Hello+Abolfazl%21+I%27ve+reached+you+through+your+personal+website.&app_absent=0",
+      },
+    ],
   },
   sectionCodingActivity: {
     title: "Coding Activity",
     number: 4,
     src: [
-      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/b5ed4485-3a02-4c47-803d-ba203d0cc818.svg",
-      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/878f25fd-1c65-4b1e-9c27-4778befaea5a.svg",
+      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/403afa8b-ac5c-4205-aa98-d7684d38b7eb.svg",
+      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/0f4586fa-7045-4a34-abc1-8e9bc6ffc662.svg",
     ],
   },
 };
