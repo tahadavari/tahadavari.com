@@ -11,6 +11,11 @@ const Container = styled.div`
   width: 100%;
   flex-direction: column;
   padding-top: 120px;
+  @media (max-width: 768px) {
+    height: auto;
+    min-height: unset;
+    padding-bottom: 40px;
+  }
 `;
 
 const Badge = styled.h1`

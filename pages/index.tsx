@@ -10,6 +10,7 @@ import SectionWork from "components/SectionWork/SectionWork";
 import SectionProjects from "components/SectionProjects/SectionProjects";
 import SectionMoreProjects from "components/SectionMoreProjects/SectionMoreProjects";
 import SectionContact from "components/SectionContact/SectionContact";
+import SectionActivity from "components/SectionActivity/SectionActivity";
 
 const Container = styled.div`
   padding: 0 50px;
@@ -47,6 +48,7 @@ const Home: NextPage = () => {
           <SectionWork />
           <SectionProjects />
           <SectionMoreProjects />
+          <SectionActivity />
           <SectionContact />
         </SectionsContainer>
       </Container>

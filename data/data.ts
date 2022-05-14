@@ -193,7 +193,7 @@ const data = {
   sectionContact: {
     show: true,
     id: "contact",
-    badge: "04. What's Next?",
+    badge: "05. What's Next?",
     title: "Get In Touch",
     description:
       "My inbox is always open. Whether you have a question or just want to say hi, I’ll try my best to get back to you!",
@@ -201,6 +201,14 @@ const data = {
       text: "Send Email",
       target: "mailto:abolfazlabdalimore@gmail.com",
     },
+  },
+  sectionCodingActivity: {
+    title: "Coding Activity",
+    number: 4,
+    src: [
+      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/b5ed4485-3a02-4c47-803d-ba203d0cc818.svg",
+      "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/878f25fd-1c65-4b1e-9c27-4778befaea5a.svg",
+    ],
   },
 };
 type projectTypes = {
@@ -223,5 +231,6 @@ export const {
   sectionWork,
   sectionProjects,
   sectionMoreProjects,
+  sectionCodingActivity,
 } = data;
 export default data;
