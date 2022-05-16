@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { sectionAboutMe as data } from "data/data";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import SectionHeader from "components/SectionHeader/SectionHeader";
+import { motion, useAnimation } from "framer-motion";
+import { useIntersect } from "lib/hooks/use-intersect";
 
 const Container = styled.section`
   max-width: 900px;
@@ -22,7 +24,7 @@ const ContentContainer = styled.div`
     display: block;
   }
 `;
-const LeftContent = styled.div``;
+const LeftContent = styled(motion.div)``;
 const LeftText = styled.div``;
 const LeftList = styled.ul`
   display: grid;
@@ -49,7 +51,7 @@ const LeftItem = styled.li`
   }
 `;
 
-const RightContent = styled.div`
+const RightContent = styled(motion.div)`
   position: relative;
   max-width: 90vh;
   width: 280px;
@@ -112,13 +114,39 @@ const RightWrapper = styled.div`
   }
 `;
 
+const descVariants = {
+  hidden: { x: -100, opacity: 0 },
+  visible: { opacity: 1, x: 0 },
+};
+const picVariants = {
+  hidden: { opacity: 0, x: 100 },
+  visible: { opacity: 1, x: 0 },
+};
+
 function SectionAboutMe() {
+  const [ref, inView] = useIntersect<HTMLDivElement>(0.6);
+  const descControl = useAnimation();
+  const picControl = useAnimation();
+  useEffect(() => {
+    if (inView) {
+      descControl.start("visible");
+      picControl.start("visible");
+    } else {
+      descControl.start("hidden");
+      picControl.start("hidden");
+    }
+  }, [inView, descControl, picControl]);
   if (!data.show) return null;
   return (
-    <Container id={data.id}>
+    <Container id={data.id} ref={ref}>
       <SectionHeader>{data.title}</SectionHeader>
       <ContentContainer>
-        <LeftContent>
+        <LeftContent
+          initial="hidden"
+          variants={descVariants}
+          animate={descControl}
+          transition={{ duration: 0.9 }}
+        >
           <LeftText dangerouslySetInnerHTML={{ __html: data.desc }}></LeftText>
           <LeftList>
             {data.list.map((item: string) => {
@@ -126,7 +154,12 @@ function SectionAboutMe() {
             })}
           </LeftList>
         </LeftContent>
-        <RightContent>
+        <RightContent
+          initial="hidden"
+          variants={picVariants}
+          animate={picControl}
+          transition={{ delay: 0.5 }}
+        >
           <RightWrapper>
             <Image src={data.picture} alt="" layout="fill" objectFit="cover" />
           </RightWrapper>
