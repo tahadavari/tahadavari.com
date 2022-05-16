@@ -1,8 +1,12 @@
 import styled from "@emotion/styled";
 import SectionHeader from "components/SectionHeader/SectionHeader";
-import React, { MouseEvent, MouseEventHandler, useState } from "react";
+import React, {
+  MouseEvent,
+  MouseEventHandler,
+  useState,
+  ReactNode,
+} from "react";
 import { sectionWork as data } from "data/data";
-import { CSSTransition } from "react-transition-group";
 import { keyframes } from "@emotion/react";
 const Container = styled.section`
   max-width: 700px;
@@ -16,7 +20,7 @@ const Container = styled.section`
     max-width: 100vw;
   }
 `;
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{ children: ReactNode | ReactNode[] }>`
   min-height: 350px;
   display: flex;
   @media (max-width: 768px) {
@@ -154,34 +158,25 @@ const SectionWork = () => {
             );
           })}
         </Tabs>
-        <CSSTransition
-          in={true}
-          timeout={800}
-          unmountOnExit
-          classNames="content"
-          key={activeTab}
-        >
-          {() => (
-            <Content className="content-view">
-              <Title>
-                {content.title}{" "}
-                <Company
-                  href={content.company.link}
-                  target="_blank"
-                  className="link"
-                >
-                  @{content.company.name}
-                </Company>
-              </Title>
-              <Date>{content.date}</Date>
-              <ContentList>
-                {content.contentList.map((item: string) => {
-                  return <ContentItem key={item}>{item}</ContentItem>;
-                })}
-              </ContentList>
-            </Content>
-          )}
-        </CSSTransition>
+
+        <Content className="content-view">
+          <Title>
+            {content.title}{" "}
+            <Company
+              href={content.company.link}
+              target="_blank"
+              className="link"
+            >
+              @{content.company.name}
+            </Company>
+          </Title>
+          <Date>{content.date}</Date>
+          <ContentList>
+            {content.contentList.map((item: string) => {
+              return <ContentItem key={item}>{item}</ContentItem>;
+            })}
+          </ContentList>
+        </Content>
       </ContentContainer>
     </Container>
   );

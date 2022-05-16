@@ -53,72 +53,33 @@ const data = {
     picture: "/me.jpg",
   },
   sectionWork: {
-    show: false,
+    show: true,
     title: "Where I’ve Worked",
     id: "experience",
     tabs: [
       {
-        tabName: "Upstatement",
+        tabName: "Freelance",
         content: {
-          title: "Studio Developer ",
-          company: { name: "Scout", link: "#" },
-          date: "January - April 2018",
+          title: "Front-End developer",
+          company: { name: "Freelance", link: "#" },
+          date: "May 2021 - May 2022",
           contentList: [
-            "Worked with a team of three designers to build a marketing website and e-commerce platform for blistabloc, an ambitious startup originating from Northeastern",
-            "Helped solidify a brand direction for blistabloc that spans both packaging and web",
-            "Interfaced with clients on a weekly basis, providing technological expertise",
+            "Work with must common React ecosystem technologies including Redux, Next.js, etc",
+            "Build stateful web applications",
+            "Work elegantly with styling libraries and tools ",
           ],
         },
       },
       {
-        tabName: "MullenLowe",
+        tabName: "Wordpress Developer",
         content: {
-          title: "Creative Technologist Co-op",
-          company: { name: "MullenLowe", link: "#" },
-          date: "July - December 2015",
+          title: "WordPress developer",
+          company: { name: "Freelance", link: "#" },
+          date: "January 2019 - December 2020",
           contentList: [
-            "Developed and maintained code for in-house and client websites primarily using HTML, CSS, Sass, JavaScript, and jQuery",
-            "Manually tested sites in various browsers and mobile devices to ensure cross-browser compatibility and responsiveness",
-            "Clients included JetBlue, Lovesac, U.S. Cellular, U.S. Department of Defense, and more",
-          ],
-        },
-      },
-      {
-        tabName: "Starry",
-        content: {
-          title: "Software Engineer Co-op ",
-          company: { name: "Starry", link: "#" },
-          date: "July - December 2016",
-          contentList: [
-            "Engineered and maintained major features of Starry's customer-facing web app using ES6, Handlebars, Backbone, Marionette and CSS",
-            "Proposed and implemented scalable solutions to issues identified with cloud services and applications responsible for communicating with Starry Station",
-            "Interfaced with user experience designers and other developers to ensure thoughtful and coherent user experiences across Starry’s iOS and Android mobile apps",
-          ],
-        },
-      },
-      {
-        tabName: "Apple",
-        content: {
-          title: "UI Engineer Co-op ",
-          company: { name: "Apple", link: "#" },
-          date: "July - December 2017",
-          contentList: [
-            "Developed and shipped highly interactive web applications for Apple Music using Ember.js",
-            "Built and shipped the Apple Music Extension within Facebook Messenger leveraging third-party and internal APIs",
-            "Architected and implemented the front-end of Apple Music's embeddable web player widget, which lets users log in and listen to full songs in the browser",
-            "Contributed extensively to MusicKit.js, a JavaScript framework that allows developers to add an Apple Music player to their web apps",
-          ],
-        },
-      },
-      {
-        tabName: "Scout",
-        content: {
-          title: "Studio Developer",
-          company: { name: "Scout", link: "#" },
-          date: "January - June 2017",
-          contentList: [
-            "Collaborated with a small team of student designers to spearhead a new brand and design system for Scout’s inaugural student-led design conference at Northeastern",
-            "Worked closely with designers and management team to develop, document, and manage the conference’s marketing website using Jekyll, Sass, and JavaScript",
+            "Build E-commerce websites with WordPress CMS and WooCommerce plugin.",
+            "Work closely with WordPress core API .e.g built in hooks.",
+            "Edit and build WordPress themes and using PHP and CSS.",
           ],
         },
       },

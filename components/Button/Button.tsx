@@ -1,10 +1,19 @@
 import styled from "@emotion/styled";
-import React, { FC, MouseEventHandler, ReactNode } from "react";
+import React, {
+  MouseEventHandler,
+  ReactNode,
+  HTMLAttributes,
+  Ref,
+  forwardRef,
+  RefObject,
+  MutableRefObject,
+} from "react";
 
-interface ButtonI {
+interface ButtonI extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   size?: "sm" | "lg" | "xl";
   onClick: MouseEventHandler<HTMLButtonElement>;
+  ref: any;
 }
 type ButtonType = Partial<ButtonI>;
 
@@ -55,9 +64,10 @@ const Btn = styled.button<ButtonType>`
   }
 `;
 
-const Button: FC<ButtonType> = ({ children, size = "sm", ...other }) => {
+const Button = (props: ButtonType) => {
+  const { children, size = "sm", ref, ...other } = props;
   return (
-    <Btn {...other} size={size}>
+    <Btn size={size} ref={ref} {...other}>
       {children}
     </Btn>
   );
