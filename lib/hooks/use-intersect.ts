@@ -25,6 +25,7 @@ export const useIntersect = <Element extends HTMLElement = HTMLElement>(
   const [isIntersecting, setIsIntersecting] = useState<boolean>(false);
   const ref = useRef<Element>();
   const observer = useRef<IntersectionObserver | null>(null);
+
   useEffect(() => {
     if (!observer.current) {
       observer.current = setupIntersection(setIsIntersecting, threshold);
@@ -41,7 +42,8 @@ export const useIntersect = <Element extends HTMLElement = HTMLElement>(
         currentObserver.disconnect();
       }
     };
-  }, deps);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...deps, threshold]);
 
   return [ref, isIntersecting] as [MutableRefObject<Element>, boolean];
 };
