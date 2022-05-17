@@ -10,13 +10,17 @@ const data = {
         text: "About",
         target: "#about",
       },
-      // {
-      //   text: "Experience",
-      //   target: "#experience",
-      // },
+      {
+        text: "Experience",
+        target: "#experience",
+      },
       {
         text: "Projects",
         target: "#projects",
+      },
+      {
+        text: "Activity",
+        target: "#activity",
       },
       {
         text: "Contact",
@@ -172,6 +176,7 @@ const data = {
   },
   sectionCodingActivity: {
     title: "Coding Activity",
+    id: "activity",
     number: 4,
     src: [
       "https://wakatime.com/share/@6d1942db-fe72-4cf8-bdae-485d39b2c16a/403afa8b-ac5c-4205-aa98-d7684d38b7eb.svg",
