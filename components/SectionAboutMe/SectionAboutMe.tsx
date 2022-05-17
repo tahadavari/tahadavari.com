@@ -20,6 +20,7 @@ const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: 3fr 2fr;
   gap: 50px;
+  overflow: hidden;
   @media (max-width: 768px) {
     display: block;
   }
@@ -124,7 +125,7 @@ const picVariants = {
 };
 
 function SectionAboutMe() {
-  const [ref, inView] = useIntersect<HTMLDivElement>(0.6);
+  const [ref, inView] = useIntersect<HTMLDivElement>(0.45);
   const descControl = useAnimation();
   const picControl = useAnimation();
   useEffect(() => {
