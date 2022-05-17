@@ -5,9 +5,11 @@ import React, {
   MouseEventHandler,
   useState,
   ReactNode,
+  useEffect,
 } from "react";
 import { sectionWork as data } from "data/data";
-import { keyframes } from "@emotion/react";
+import { motion, useAnimation } from "framer-motion";
+import { useIntersect } from "lib/hooks/use-intersect";
 const Container = styled.section`
   max-width: 700px;
   margin: 0px auto;
@@ -47,7 +49,7 @@ type TabProps = {
   onClick: MouseEventHandler<HTMLButtonElement>;
   isActive: boolean;
 };
-const Tab = styled.button<TabProps>`
+const Tab = styled(motion.button)<TabProps>`
   text-decoration: none;
   text-decoration-skip-ink: auto;
   position: relative;
@@ -79,22 +81,13 @@ const Tab = styled.button<TabProps>`
     background-color: var(--light-navy);
   `}
 `;
-const contentFrames = keyframes`
-    from{
-        opacity: 0;
-        transform: translateY(-10%);
-    }to{
-        opacity:1;
-        transform: translateY(0); 
-    }
-`;
-const Content = styled.div`
+
+const Content = styled(motion.div)`
   width: "100%";
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   margin-left: 25px;
-  animation: ${contentFrames} 0.4s ease-out;
   @media (max-width: 768px) {
     margin-left: 0;
   }
@@ -126,10 +119,24 @@ const ContentItem = styled.li`
     color: var(--green);
   }
 `;
-
+const contentVariants = {
+  hidden: { x: "-100%", opacity: 0, scale: 0.9 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+      opacity: {
+        delay: 0.2,
+      },
+    },
+  },
+};
 const SectionWork = () => {
   const [activeTab, setActiveTab] = useState<string>(data.tabs[0].tabName);
   const [content, setContent] = useState<any>(data.tabs[0].content);
+
   const getContent = (tabName: string) => {
     const index = data.tabs.findIndex((data) => data.tabName === tabName);
     return data.tabs[index].content;
@@ -152,6 +159,10 @@ const SectionWork = () => {
                 key={tab.content.date}
                 onClick={handleClickTab}
                 isActive={activeTab === tab.tabName}
+                whileTap={{
+                  scale: 0.95,
+                }}
+                transition={{ duration: 0.05, delay: 0, ease: "linear" }}
               >
                 {tab.tabName}
               </Tab>
@@ -159,7 +170,13 @@ const SectionWork = () => {
           })}
         </Tabs>
 
-        <Content className="content-view">
+        <Content
+          variants={contentVariants}
+          initial="hidden"
+          animate={"visible"}
+          key={activeTab}
+          transition={{ damping: 0 }}
+        >
           <Title>
             {content.title}{" "}
             <Company
