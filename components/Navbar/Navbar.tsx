@@ -7,8 +7,8 @@ import React, {
 } from "react";
 import { navBar as data } from "data/data";
 import Button from "components/Button/Button";
-import { FaAngleLeft, FaAngleRight, FaRegCircle } from "react-icons/fa";
-import { keyframes } from "@emotion/react";
+import { FaListUl, FaAngleRight, FaRegCircle } from "react-icons/fa";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 
 type ContainerType = {
   navIsScroll: boolean;
@@ -86,7 +86,7 @@ const NavItem = styled.a<NavItemType>`
 type MenuControlType = {
   onClick: MouseEventHandler<SVGElement>;
 };
-const OpenMenu = styled(FaAngleLeft)<MenuControlType>`
+const OpenMenu = styled(FaListUl)<MenuControlType>`
   font-size: var(--fz-xxl);
   color: var(--white);
   display: none;
@@ -105,23 +105,14 @@ const CloseMenu = styled(FaAngleRight)<MenuControlType>`
   width: max-content;
   height: max-content;
 `;
-const drawerKeyFrames = keyframes`
-  from {
-    transform: translateX(100%);
-  }to {
-    transform: translateX(0);
 
-  }
-`;
-const DrawerMenu = styled.div`
-  transition: var(--transition);
+const DrawerMenu = styled(motion.div)`
   width: 300px;
   max-width: 90vw;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 20px;
-  animation: ${drawerKeyFrames} 0.3s ease-in;
   position: fixed;
   right: 0;
   top: 0;
@@ -136,7 +127,7 @@ const DrawerMenu = styled.div`
 type OverlayType = {
   onClick: MouseEventHandler<HTMLElement>;
 };
-const Overlay = styled.div<OverlayType>`
+const Overlay = styled(motion.div)<OverlayType>`
   position: fixed;
   width: 100%;
   height: 100%;
@@ -155,10 +146,30 @@ const MenuButton = styled(Button)`
   }
 `;
 let lastScroll = 0;
+
+const drawerVariants = {
+  visible: {
+    x: 0,
+  },
+  exit: {
+    x: "100%",
+  },
+};
+const overlayVariants = {
+  visible: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+};
+
 const Navbar = () => {
   const [openDraw, setOpenDraw] = useState<boolean>(false);
   const [navIsScroll, setNavIsScroll] = useState<boolean>(true);
   const [navInTop, setNavInTop] = useState<boolean>(true);
+  const controlAnimate = useAnimation();
+
   useEffect(() => {
     const checkIfScrolled = (e: Event) => {
       const scrollY = window.scrollY;
@@ -182,6 +193,11 @@ const Navbar = () => {
     };
   }, []);
   const handleDrawerMenu = (e: MouseEvent<SVGElement | HTMLElement>) => {
+    if (openDraw) {
+      controlAnimate.start("exit");
+    } else {
+      controlAnimate.start("visible");
+    }
     setOpenDraw((prev) => !prev);
   };
   return (
@@ -211,25 +227,39 @@ const Navbar = () => {
           </Right>
         </Container>
       )}
-      {openDraw && (
-        <React.Fragment>
-          <DrawerMenu>
-            <CloseMenu onClick={handleDrawerMenu} />
-            {data.items.map((item, i) => {
-              return (
-                <NavItem
-                  href={item.target}
-                  key={item.text}
-                  onClick={handleDrawerMenu}
-                >
-                  {item.text}
-                </NavItem>
-              );
-            })}
-          </DrawerMenu>
-          <Overlay onClick={handleDrawerMenu} />
-        </React.Fragment>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {openDraw && (
+          <React.Fragment>
+            <DrawerMenu
+              variants={drawerVariants}
+              animate={"visible"}
+              initial="exit"
+              exit="exit"
+              transition={{ ease: "linear", duration: 0.2, damping: 20 }}
+            >
+              <CloseMenu onClick={handleDrawerMenu} />
+              {data.items.map((item, i) => {
+                return (
+                  <NavItem
+                    href={item.target}
+                    key={item.text}
+                    onClick={handleDrawerMenu}
+                  >
+                    {item.text}
+                  </NavItem>
+                );
+              })}
+            </DrawerMenu>
+            <Overlay
+              onClick={handleDrawerMenu}
+              variants={overlayVariants}
+              animate={"visible"}
+              initial="exit"
+              exit="exit"
+            />
+          </React.Fragment>
+        )}
+      </AnimatePresence>
     </React.Fragment>
   );
 };
