@@ -145,7 +145,7 @@ function SectionAboutMe() {
           initial="hidden"
           variants={descVariants}
           animate={descControl}
-          transition={{ duration: 0.9 }}
+          transition={{ duration: 0.9, damping: 20 }}
         >
           <LeftText dangerouslySetInnerHTML={{ __html: data.desc }}></LeftText>
           <LeftList>
@@ -158,7 +158,6 @@ function SectionAboutMe() {
           initial="hidden"
           variants={picVariants}
           animate={picControl}
-          transition={{ delay: 0.5 }}
         >
           <RightWrapper>
             <Image src={data.picture} alt="" layout="fill" objectFit="cover" />
