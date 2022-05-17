@@ -5,11 +5,9 @@ import React, {
   MouseEventHandler,
   useState,
   ReactNode,
-  useEffect,
 } from "react";
 import { sectionWork as data } from "data/data";
-import { motion, useAnimation } from "framer-motion";
-import { useIntersect } from "lib/hooks/use-intersect";
+import { motion } from "framer-motion";
 const Container = styled.section`
   max-width: 700px;
   margin: 0px auto;
