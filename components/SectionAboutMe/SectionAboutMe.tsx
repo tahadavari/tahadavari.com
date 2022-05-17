@@ -1,10 +1,16 @@
 import React, { useEffect } from "react";
 import { sectionAboutMe as data } from "data/data";
 import styled from "@emotion/styled";
-import Image from "next/image";
+// import Image from "next/image";
 import SectionHeader from "components/SectionHeader/SectionHeader";
 import { motion, useAnimation } from "framer-motion";
 import { useIntersect } from "lib/hooks/use-intersect";
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
 
 const Container = styled.section`
   max-width: 900px;
@@ -161,7 +167,7 @@ function SectionAboutMe() {
           animate={picControl}
         >
           <RightWrapper>
-            <Image src={data.picture} alt="" layout="fill" objectFit="cover" />
+            <Image src={data.picture} alt="" />
           </RightWrapper>
         </RightContent>
       </ContentContainer>

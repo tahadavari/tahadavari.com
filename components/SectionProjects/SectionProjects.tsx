@@ -3,9 +3,11 @@ import React, { useEffect } from "react";
 import SectionHeader from "components/SectionHeader/SectionHeader";
 import { sectionProjects as data } from "data/data";
 import { FaGithub, FaLink } from "react-icons/fa";
-import Image from "next/image";
+// import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { useIntersect } from "lib/hooks/use-intersect";
+
+const Image = styled.img``;
 
 const Container = styled.section`
   max-width: 980px;
