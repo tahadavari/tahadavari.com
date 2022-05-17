@@ -5,6 +5,8 @@ import { BiLinkExternal } from "react-icons/bi";
 import { BsFolder2 } from "react-icons/bs";
 import { sectionMoreProjects as data } from "data/data";
 import Button from "components/Button/Button";
+import { motion } from "framer-motion";
+
 const Container = styled.div`
   width: 100%;
   display: flex;
@@ -26,7 +28,7 @@ const ContentContainer = styled.div`
   justify-content: center;
 `;
 
-const Project = styled.div`
+const Project = styled(motion.div)`
   box-shadow: 0 10px 30px -15px var(--navy-shadow);
   display: flex;
   justify-content: space-between;
@@ -93,7 +95,6 @@ const TitleLink = styled.a`
     height: 100%;
     display: block;
     z-index: 1;
-    /* background-color: red; */
   }
 `;
 const Description = styled.p`
@@ -139,7 +140,11 @@ const SectionMoreProjects = () => {
           .slice(0, !showMore ? 6 : data.projects.length)
           .map((project, i) => {
             return (
-              <Project key={project.title}>
+              <Project
+                key={project.title}
+                initial={{ scale: 0.3 }}
+                animate={{ scale: 1 }}
+              >
                 <ProjectHeader>
                   <ProjectTop>
                     <Folder>
