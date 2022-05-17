@@ -43,11 +43,14 @@ const Tabs = styled.div`
     margin-bottom: 20px;
   }
 `;
-type TabProps = {
+interface Tab {
   onClick: MouseEventHandler<HTMLButtonElement>;
   isActive: boolean;
-};
-const Tab = styled(motion.button)<TabProps>`
+}
+
+const Tab = styled(motion.button, {
+  shouldForwardProp: (prop) => prop !== "isActive",
+})<Tab>`
   text-decoration: none;
   text-decoration-skip-ink: auto;
   position: relative;
