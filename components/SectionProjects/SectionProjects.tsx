@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { MutableRefObject, useEffect } from "react";
+import React, { useEffect } from "react";
 import SectionHeader from "components/SectionHeader/SectionHeader";
 import { sectionProjects as data } from "data/data";
 import { FaGithub, FaLink } from "react-icons/fa";
