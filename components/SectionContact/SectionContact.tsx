@@ -86,7 +86,6 @@ const BUttonsContainer = styled.div`
   }
 `;
 const SectionContact = () => {
-  if (!data.show) return null;
   return (
     <Container id={data.id}>
       <Badge>{data.badge}</Badge>

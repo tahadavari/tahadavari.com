@@ -53,7 +53,7 @@ const StyledButton = styled(Button)`
   margin-top: 50px;
 `;
 const containerVariants = {
-  hidden: { scale: 0 },
+  hidden: { scale: 0.9 },
   visible: { scale: 1 },
 };
 const TopSection = () => {
@@ -62,8 +62,6 @@ const TopSection = () => {
   useEffect(() => {
     if (inView) {
       controls.start("visible");
-    } else {
-      controls.start("hidden");
     }
   }, [inView, controls]);
   return (

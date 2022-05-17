@@ -25,11 +25,14 @@ const Chart = styled(motion.div)`
   justify-content: center;
   align-items: center;
   & > figure {
-    width: 60%;
+    width: 80%;
+    @media (min-width: 1024px) {
+      width: 60%;
+    }
   }
 `;
 const chartVariants = {
-  hidden: { scale: 0.2 },
+  hidden: { scale: 0.9 },
   visible: { scale: 1, transition: { duration: 0.5 } },
 };
 const SectionActivity = () => {
@@ -38,7 +41,7 @@ const SectionActivity = () => {
   useEffect(() => {
     if (inView) {
       controlAnimation.start("visible");
-    } else [controlAnimation.start("hidden")];
+    }
   }, [inView, controlAnimation]);
   return (
     <Container id={data.id}>

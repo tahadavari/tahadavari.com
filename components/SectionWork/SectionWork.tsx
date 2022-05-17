@@ -18,10 +18,11 @@ const Container = styled.section`
   flex-direction: column;
   @media (max-width: 768px) {
     max-width: 100vw;
+    padding: 25px 0;
   }
 `;
 const ContentContainer = styled.div<{ children: ReactNode | ReactNode[] }>`
-  min-height: 350px;
+  /* min-height: 100px; */
   display: flex;
   @media (max-width: 768px) {
     flex-direction: column;
@@ -148,7 +149,7 @@ const SectionWork = () => {
     setContent(content);
     setActiveTab(tabName);
   };
-  if (!data.show) return null;
+
   return (
     <Container id={data.id}>
       <SectionHeader number={2}>Where I&rsquo;ve Worked</SectionHeader>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { sectionAboutMe as data } from "data/data";
 import styled from "@emotion/styled";
 // import Image from "next/image";
@@ -6,11 +6,7 @@ import SectionHeader from "components/SectionHeader/SectionHeader";
 import { motion, useAnimation } from "framer-motion";
 import { useIntersect } from "lib/hooks/use-intersect";
 
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
+const Image = styled.img``;
 
 const Container = styled.section`
   max-width: 900px;
@@ -19,6 +15,7 @@ const Container = styled.section`
 
   @media (max-width: 768px) {
     max-width: 100vw;
+    padding: 25px 0px;
   }
 `;
 
@@ -61,13 +58,16 @@ const LeftItem = styled.li`
 const RightContent = styled(motion.div)`
   position: relative;
   max-width: 90vh;
-  width: 280px;
-  height: 280px;
-  max-height: 90vh;
+  width: 100%;
+  height: 100%;
+  padding: 30px 0;
+  padding-right: 20px;
+
   @media (max-width: 768px) {
     margin: 50px auto 0px;
-    width: 230px;
-    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 const RightWrapper = styled.div`
@@ -75,9 +75,8 @@ const RightWrapper = styled.div`
   transition: var(--transition);
   display: block;
   position: relative;
-  width: 100%;
-  height: 100%;
-
+  width: 210px;
+  height: 210px;
   border-radius: var(--border-radius);
   background-color: var(--green);
   & img {
@@ -86,6 +85,9 @@ const RightWrapper = styled.div`
     mix-blend-mode: multiply;
     filter: grayscale(100%) contrast(1);
     transition: var(--transition);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   &::before {
     top: 0px;
@@ -122,28 +124,26 @@ const RightWrapper = styled.div`
 `;
 
 const descVariants = {
-  hidden: { x: -100, opacity: 0 },
-  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 const picVariants = {
-  hidden: { opacity: 0, x: 100 },
-  visible: { opacity: 1, x: 0 },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 function SectionAboutMe() {
   const [ref, inView] = useIntersect<HTMLDivElement>(0.45);
   const descControl = useAnimation();
   const picControl = useAnimation();
+  console.log({ inView });
+
   useEffect(() => {
     if (inView) {
       descControl.start("visible");
       picControl.start("visible");
-    } else {
-      descControl.start("hidden");
-      picControl.start("hidden");
     }
   }, [inView, descControl, picControl]);
-  if (!data.show) return null;
   return (
     <Container id={data.id} ref={ref}>
       <SectionHeader>{data.title}</SectionHeader>

@@ -7,7 +7,9 @@ import { FaGithub, FaLink } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useIntersect } from "lib/hooks/use-intersect";
 
-const Image = styled.img``;
+const Image = styled.img`
+  aspect-ratio: 16 / 9;
+`;
 
 const Container = styled.section`
   max-width: 980px;
@@ -19,6 +21,7 @@ const Container = styled.section`
   flex-direction: column;
   @media (max-width: 768px) {
     max-width: 100vw;
+    padding: 30px 0px;
   }
 `;
 
@@ -26,6 +29,7 @@ const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  position: relative;
 `;
 
 const ProjectImageContainer = styled.div`
@@ -34,7 +38,20 @@ const ProjectImageContainer = styled.div`
   transition: var(--transition);
 
   & img {
-    object-fit: cover;
+    /* object-fit: cover; */
+    aspect-ratio: 16 / 9;
+    height: auto;
+    width: 100%;
+  }
+  filter: unset;
+  mix-blend-mode: soft-light;
+  @media (max-width: 1024px) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.4;
+    filter: contrast(0.9);
+    mix-blend-mode: soft-light;
   }
 `;
 const ProjectInfoContainer = styled.div`
@@ -45,7 +62,7 @@ const ProjectInfoContainer = styled.div`
   position: absolute;
   right: 0;
   direction: rtl;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     grid-column: 1 / -1;
   }
 `;
@@ -96,7 +113,7 @@ const ProjectLinks = styled.div`
 `;
 const Github = styled.a``;
 const Link = styled.a``;
-const Project = styled(motion.div)<{ direction: "ltr" | "rtl" }>`
+const Project = styled.div<{ direction: "ltr" | "rtl" }>`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr;
@@ -129,6 +146,9 @@ const Project = styled(motion.div)<{ direction: "ltr" | "rtl" }>`
 
   `}
   @media (max-width: 1024px) {
+    &:not(:first-of-type) {
+      margin-top: 100px;
+    }
     ${ProjectInfoContainer} {
       display: flex;
       flex-direction: column;
@@ -154,42 +174,26 @@ const Project = styled(motion.div)<{ direction: "ltr" | "rtl" }>`
       }
     }
   }
-`;
-const projectVariants = {
-  hidden: (val: number) => ({
-    x: val + "%",
-    opacity: 0,
-  }),
-  visible: {
-    x: 0,
-    opacity: 1,
-  },
-};
-const SectionProjects = () => {
-  const [ref, inView] = useIntersect<HTMLDivElement>(0.1);
-  const animationControl = useAnimation();
-  useEffect(() => {
-    if (inView) {
-      animationControl.start("visible");
-    } else {
-      animationControl.start("hidden");
+  @media (max-width: 764px) {
+    &:not(:first-of-type) {
+      margin-top: 120px;
     }
-  }, [animationControl, inView]);
-  if (!data.show) return null;
+  }
+  @media (max-width: 600px) {
+    &:not(:first-of-type) {
+      margin-top: 60px;
+    }
+  }
+`;
+
+const SectionProjects = () => {
   return (
     <Container id={data.id}>
       <SectionHeader number={3}>{data.title}</SectionHeader>
-      <ContentContainer ref={ref}>
+      <ContentContainer>
         {data.projects.map((project) => {
           return (
-            <Project
-              key={project.title}
-              direction={project.direction}
-              custom={project.direction === "rtl" ? 100 : -100}
-              variants={projectVariants}
-              initial="hidden"
-              animate={animationControl}
-            >
+            <Project key={project.title} direction={project.direction}>
               <ProjectImageContainer>
                 <Image
                   src={project.image}

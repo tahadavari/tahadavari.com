@@ -14,6 +14,9 @@ const Container = styled.div`
   gap: 50px;
   align-items: center;
   padding-bottom: 100px;
+  @media (max-width: 768px) {
+    padding: 50px 0;
+  }
 `;
 const Header = styled.h2`
   align-self: center;
@@ -131,7 +134,6 @@ const SectionMoreProjects = () => {
   const handleShowMore = (e: MouseEvent<HTMLButtonElement>) => {
     setShowMore((prev) => !prev);
   };
-  if (!data.show) return null;
   return (
     <Container>
       <Header>Other Noteworthy Projects</Header>
@@ -142,8 +144,8 @@ const SectionMoreProjects = () => {
             return (
               <Project
                 key={project.title}
-                initial={{ scale: 0.3 }}
-                animate={{ scale: 1 }}
+                initial={{ opacity: 0.7 }}
+                animate={{ opacity: 1 }}
               >
                 <ProjectHeader>
                   <ProjectTop>
