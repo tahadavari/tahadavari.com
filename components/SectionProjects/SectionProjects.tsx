@@ -43,15 +43,11 @@ const ProjectImageContainer = styled.div`
     height: auto;
     width: 100%;
   }
-  filter: unset;
-  mix-blend-mode: soft-light;
   @media (max-width: 1024px) {
     position: absolute;
     left: 0;
     top: 0;
     opacity: 0.4;
-    filter: contrast(0.9);
-    mix-blend-mode: soft-light;
   }
 `;
 const ProjectInfoContainer = styled.div`

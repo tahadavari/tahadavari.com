@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
-import { social, email } from "data/data";
+import { social, email, Social } from "data";
 import {
   FaGithub,
   FaInstagram,
@@ -8,7 +8,10 @@ import {
   FaTwitter,
   FaCodepen,
 } from "react-icons/fa";
-
+type SocialType = keyof Social;
+type SocialIconsType = {
+  [T in keyof Social]: JSX.Element;
+};
 const line = `
     &::after{
         content: "";
@@ -74,25 +77,31 @@ const Container = styled.div`
     display: none;
   }
 `;
+
+const Icons: SocialIconsType = {
+  codepen: <FaCodepen />,
+  github: <FaGithub />,
+  instagram: <FaInstagram />,
+  linkedin: <FaLinkedinIn />,
+  twitter: <FaTwitter />,
+};
+const renderSocialIcon = (name: SocialType): JSX.Element => {
+  return Icons[name];
+};
 const Badges = () => {
   return (
     <Container>
       <Left>
-        <Social href={social.github} target="_blank">
-          <FaGithub />
-        </Social>
-        <Social href={social.twitter} target="_blank">
-          <FaTwitter />
-        </Social>
-        <Social href={social.instagram} target="_blank">
-          <FaInstagram />
-        </Social>
-        <Social href={social.linkedin} target="_blank">
-          <FaLinkedinIn />
-        </Social>
-        <Social href={social.codepen} target="_blank">
-          <FaCodepen />
-        </Social>
+        {Object.keys(social).map((s: string) => {
+          const name = s as SocialType;
+          const item = social[name];
+          if (item.length > 1)
+            return (
+              <Social href={item} target="_blank" key={item}>
+                {renderSocialIcon(name)}
+              </Social>
+            );
+        })}
       </Left>
       <Right>
         <Email href={"http://mailto" + email} target="_blank">

@@ -1,9 +1,9 @@
-const data = {
+import { DataType } from "./types";
+const data: DataType = {
   navBar: {
     button: {
       text: "Resume",
-      target:
-        "https://docs.google.com/document/d/1v2XezneFL_CoUhR61u1zAOmFMJ3bFSXsI_YY7wMxOXo/edit?usp=sharing",
+      target: "",
     },
     items: [
       {
@@ -33,26 +33,25 @@ const data = {
     badge: "Hi, my name is",
     name: "Abolfazl Abadli",
     slogan: "I build things for the web",
-    desc: "I’m a Front-End developer specializing in building single page web applications . Currently, I’m looking for a new opportunity.",
+    desc: "I’m a Front-End developer specializing in building single page web applications .",
     button: {
       text: "Check my resume",
-      target:
-        "https://docs.google.com/document/d/1v2XezneFL_CoUhR61u1zAOmFMJ3bFSXsI_YY7wMxOXo/edit?usp=sharing",
+      target: "/abolfazl-resume.pdf",
     },
   },
   social: {
     github: "https://github.com/abdalicodes",
-    instagram: "https://www.instagram.com/_abolfazlabdali/",
-    twitter: "https://twitter.com/_abolfazlabdali",
+    instagram: "",
+    twitter: "",
     linkedin: "https://www.linkedin.com/in/abolfazl-abdali/",
     codepen: "",
   },
-  email: "abolfazlabdalimore@gmail.com",
+  email: "abolfazlabdali0@gmail.com",
   sectionAboutMe: {
     show: true,
     id: "about",
     title: "About Me",
-    desc: `<p>Hello! My name is Abolfazl and I enjoy creating things that live on the internet. My interest in web development started back in 2018 when I decided to try editing custom WordPress themes — turns out hacking together a custom  button taught me a lot about HTML &amp; CSS!</p> <p>Here are a few technologies I’ve been working with recently:</p>`,
+    desc: `<p>Hello! My name is Abolfazl and I enjoy creating things that live on the internet. My interest in web development started back in 2017 when I decided to try editing custom WordPress themes — turns out hacking together a custom  button taught me a lot about HTML &amp; CSS!</p> <p>Here are a few technologies I’ve been working with recently:</p>`,
     list: ["JavaScript", "TypeScript", "React", "Next.Js", "CSS", "Redux"],
     picture: "/me.jpg",
   },
@@ -62,13 +61,26 @@ const data = {
     id: "experience",
     tabs: [
       {
-        tabName: "Freelance",
+        tabName: "Front-End Developer",
         content: {
-          title: "Front-End developer",
-          company: { name: "Freelance", link: "#" },
-          date: "May 2021 - May 2022",
+          title: "Front-End developer Next.js",
+          company: { name: "Almas", link: "#" },
+          date: "May 2022 - July 2022 . 3 mos",
           contentList: [
-            "Work with must common React ecosystem technologies including Redux, Next.js, etc",
+            "I built an awesome UI for a marketplace where sellers could add their products to the market",
+            "Handle interactive features like Drag & Drop for most parts of the dashboard and image inputs for 3D images",
+            "We used GraphQL, Next.js, and Redux in Almas.",
+          ],
+        },
+      },
+      {
+        tabName: "JavaScript Developer",
+        content: {
+          title: "JavaScript Developer",
+          company: { name: "Freelance", link: "#" },
+          date: "Mar 2021 - Apr 2022 . 1 yr 2 mos",
+          contentList: [
+            "Work with most common React ecosystem technologies, including Redux, Next.js, etc.",
             "Build stateful web applications",
             "Work elegantly with styling libraries and tools ",
           ],
@@ -79,11 +91,11 @@ const data = {
         content: {
           title: "WordPress developer",
           company: { name: "Freelance", link: "#" },
-          date: "January 2019 - December 2020",
+          date: "Jan 2018 - Aug 2020 . 2 yr 8 mos",
           contentList: [
             "Build E-commerce websites with WordPress CMS and WooCommerce plugin.",
-            "Work closely with WordPress core API .e.g built in hooks.",
-            "Edit and build WordPress themes and using PHP and CSS.",
+            "Work closely with the WordPress core API, e.g., built-in hooks.",
+            "Edit and build WordPress themes using PHP and CSS.",
           ],
         },
       },
@@ -99,36 +111,36 @@ const data = {
         badge: "Featured Project",
         title: "Spotify clone",
         description:
-          "A Spotify-like music app build according to Spotify redesign with React.js",
+          "A Spotify-like music app built according to Spotify's redesign with React.js",
         tags: ["React", "Material UI", "React Query"],
-        link: "https://www.youtube.com/watch?v=qF3OSSuB3Nk",
+        link: "https://spotify-ab.netlify.app/",
         github: "https://github.com/abdalicodes/spotify",
         direction: "rtl",
       },
       {
-        image: "/ui-ai.jpg",
+        image: "/abdalia.jpg",
         badge: "Featured Project",
-        title: "UI-AI blog",
-        description:
-          "A multi-authoring blog where users can change their role to the author and write content",
-        tags: ["React", "TypeScript", "Tailwind"],
-        link: "https://ui-ai.ir",
-        github: "",
+        title: "Next.js Portfolio",
+        description: "A personal website built with Next.js and Framer Motion",
+        tags: ["Next.js", "TypeScript", "SASS", "Framer Motion"],
+        link: "https://abdalia.ir",
+        github: "https://github.com/abdalicodes/next-portfolio",
         direction: "ltr",
       },
       {
         image: "/coinbase.jpg",
         badge: "Featured project",
         title: "Coinbase UI",
-        description: "coinbase clone app with using React and Chakra-UI kit.",
+        description: "The Coinbase clone app uses React and the Chakra-UI kit.",
         tags: ["React", "Chakra-UI"],
         link: "https://abdalicodes.github.io/coinbase-react/",
         github: "https://github.com/abdalicodes/coinbase-react",
         direction: "rtl",
       },
-    ] as projectTypes[],
+    ],
   },
   sectionMoreProjects: {
+    id: "",
     show: true,
     title: "Other Noteworthy Projects",
     projects: [
@@ -165,7 +177,7 @@ const data = {
     buttons: [
       {
         text: "📩 Send Email",
-        target: "mailto:abolfazlabdalimore@gmail.com",
+        target: "mailto:abolfazlabdali0@gmail.com",
       },
       {
         text: `📞 WhatsApp`,
@@ -184,16 +196,7 @@ const data = {
     ],
   },
 };
-type projectTypes = {
-  image: string;
-  badge: string;
-  title: string;
-  description: string;
-  tags: string[];
-  link: string;
-  github: string;
-  direction: "rtl" | "ltr";
-};
+
 export const {
   sectionContact,
   navBar,
