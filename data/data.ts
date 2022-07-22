@@ -31,7 +31,7 @@ const data: DataType = {
   sectionOne: {
     id: "",
     badge: "Hi, my name is",
-    name: "Abolfazl Abadli",
+    name: "Abolfazl Abdali",
     slogan: "I build things for the web",
     desc: "I’m a Front-End developer specializing in building single page web applications .",
     button: {

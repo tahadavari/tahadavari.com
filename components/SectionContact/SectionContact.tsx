@@ -1,5 +1,5 @@
 import React from "react";
-import { sectionContact as data, social, email } from "data/data";
+import { sectionContact as data, social, Social, email } from "data";
 import styled from "@emotion/styled";
 import Button from "components/Button/Button";
 import {
@@ -9,6 +9,12 @@ import {
   FaTwitter,
   FaCodepen,
 } from "react-icons/fa";
+
+type SocialType = keyof Social;
+type SocialIconsType = {
+  [T in keyof Social]: JSX.Element;
+};
+
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
@@ -85,6 +91,18 @@ const BUttonsContainer = styled.div`
     margin-right: 20px;
   }
 `;
+
+const Icons: SocialIconsType = {
+  codepen: <FaCodepen />,
+  github: <FaGithub />,
+  instagram: <FaInstagram />,
+  linkedin: <FaLinkedinIn />,
+  twitter: <FaTwitter />,
+};
+const renderSocialIcon = (name: SocialType): JSX.Element => {
+  return Icons[name];
+};
+
 const SectionContact = () => {
   return (
     <Container id={data.id}>
@@ -103,21 +121,16 @@ const SectionContact = () => {
 
       <InfoContainer>
         <Socials>
-          <Social href={social.github} target="_blank">
-            <FaGithub />
-          </Social>
-          <Social href={social.twitter} target="_blank">
-            <FaTwitter />
-          </Social>
-          <Social href={social.instagram} target="_blank">
-            <FaInstagram />
-          </Social>
-          <Social href={social.linkedin} target="_blank">
-            <FaLinkedinIn />
-          </Social>
-          <Social href={social.codepen} target="_blank">
-            <FaCodepen />
-          </Social>
+          {Object.keys(social).map((s: string) => {
+            const name = s as SocialType;
+            const item = social[name];
+            if (item.length > 1)
+              return (
+                <Social href={item} target="_blank" key={item}>
+                  {renderSocialIcon(name)}
+                </Social>
+              );
+          })}
         </Socials>
         <Email href={"mailto:" + email} target="_blank">
           {email}
