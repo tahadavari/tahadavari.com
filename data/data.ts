@@ -31,28 +31,28 @@ const data: DataType = {
   sectionOne: {
     id: "",
     badge: "Hi, my name is",
-    name: "Abolfazl Abdali",
+    name: "Taha Davari",
     slogan: "I build things for the web",
-    desc: "I’m a Front-End developer specializing in building single page web applications .",
+    desc: "I’m a Back-End developer.",
     button: {
       text: "Check my resume",
-      target: "/abolfazl-resume.pdf",
+      target: "/taha-davari-resume",
     },
   },
   social: {
-    github: "https://github.com/abdalicodes",
-    instagram: "",
+    github: "https://github.com/tahadavari",
+    instagram: "https://github.com/mr.taha0",
     twitter: "",
-    linkedin: "https://www.linkedin.com/in/abolfazl-abdali/",
+    linkedin: "https://www.linkedin.com/in/taha-davari",
     codepen: "",
   },
-  email: "abolfazlabdali0@gmail.com",
+  email: "tahadavari1381@gmail.com",
   sectionAboutMe: {
     show: true,
     id: "about",
     title: "About Me",
-    desc: `<p>Hello! My name is Abolfazl and I enjoy creating things that live on the internet. My interest in web development started back in 2017 when I decided to try editing custom WordPress themes — turns out hacking together a custom  button taught me a lot about HTML &amp; CSS!</p> <p>Here are a few technologies I’ve been working with recently:</p>`,
-    list: ["JavaScript", "TypeScript", "React", "Next.Js", "CSS", "Redux"],
+    desc: `<p>Hello! My name is Taha and I enjoy creating things that live on the internet. My interest in web development started back in 2017 when I decided to try editing custom WordPress themes — turns out hacking together a custom  button taught me a lot about HTML &amp; CSS!</p> <p>Here are a few technologies I’ve been working with recently:</p>`,
+    list: ["Python", "Django", "PHP", "Laravel"],
     picture: "/me.jpg",
   },
   sectionWork: {
@@ -61,10 +61,10 @@ const data: DataType = {
     id: "experience",
     tabs: [
       {
-        tabName: "Front-End Developer",
+        tabName: "Back-End Developer",
         content: {
-          title: "Front-End developer Next.js",
-          company: { name: "Almas", link: "#" },
+          title: "Back-End developer",
+          company: { name: "Komodaa", link: "https://www.komodaa.com/" },
           date: "May 2022 - July 2022 . 3 mos",
           contentList: [
             "I built an awesome UI for a marketplace where sellers could add their products to the market",
@@ -73,32 +73,32 @@ const data: DataType = {
           ],
         },
       },
-      {
-        tabName: "JavaScript Developer",
-        content: {
-          title: "JavaScript Developer",
-          company: { name: "Freelance", link: "#" },
-          date: "Mar 2021 - Apr 2022 . 1 yr 2 mos",
-          contentList: [
-            "Work with most common React ecosystem technologies, including Redux, Next.js, etc.",
-            "Build stateful web applications",
-            "Work elegantly with styling libraries and tools ",
-          ],
-        },
-      },
-      {
-        tabName: "Wordpress Developer",
-        content: {
-          title: "WordPress developer",
-          company: { name: "Freelance", link: "#" },
-          date: "Jan 2018 - Aug 2020 . 2 yr 8 mos",
-          contentList: [
-            "Build E-commerce websites with WordPress CMS and WooCommerce plugin.",
-            "Work closely with the WordPress core API, e.g., built-in hooks.",
-            "Edit and build WordPress themes using PHP and CSS.",
-          ],
-        },
-      },
+      // {
+      //   tabName: "JavaScript Developer",
+      //   content: {
+      //     title: "JavaScript Developer",
+      //     company: { name: "Freelance", link: "#" },
+      //     date: "Mar 2021 - Apr 2022 . 1 yr 2 mos",
+      //     contentList: [
+      //       "Work with most common React ecosystem technologies, including Redux, Next.js, etc.",
+      //       "Build stateful web applications",
+      //       "Work elegantly with styling libraries and tools ",
+      //     ],
+      //   },
+      // },
+      // {
+      //   tabName: "Wordpress Developer",
+      //   content: {
+      //     title: "WordPress developer",
+      //     company: { name: "Freelance", link: "#" },
+      //     date: "Jan 2018 - Aug 2020 . 2 yr 8 mos",
+      //     contentList: [
+      //       "Build E-commerce websites with WordPress CMS and WooCommerce plugin.",
+      //       "Work closely with the WordPress core API, e.g., built-in hooks.",
+      //       "Edit and build WordPress themes using PHP and CSS.",
+      //     ],
+      //   },
+      // },
     ],
   },
   sectionProjects: {
@@ -182,7 +182,7 @@ const data: DataType = {
       {
         text: `📞 WhatsApp`,
         target:
-          "https://api.whatsapp.com/send/?phone=989390623327&text=Hello+Abolfazl%21+I%27ve+reached+you+through+your+personal+website.&app_absent=0",
+          "https://api.whatsapp.com/send/?phone=09215545897&text=Hello+Taha%21+I%27ve+reached+you+through+your+personal+website.&app_absent=0",
       },
     ],
   },
